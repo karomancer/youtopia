@@ -26,7 +26,7 @@ void checkSchool() {
 
     if (data5 > 50) {
       Serial.println("school registered");
-      sensor4Characteristic.writeValue(1);
+      sensor5Characteristic.writeValue(1);
     }
     apds5.clearInterrupt();
   }
