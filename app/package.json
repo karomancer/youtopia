@@ -1,0 +1,23 @@
+{
+  "name": "youtopia",
+  "version": "1.0.0",
+  "description": "A central server for all incoming and outgoing Youtopia sensor data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karomancer/youtopia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karomancer/youtopia/issues"
+  },
+  "homepage": "https://github.com/karomancer/youtopia#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

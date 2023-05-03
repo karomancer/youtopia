@@ -4,6 +4,15 @@ const SERVICE_UUID = "2d32cb10-dd61-11ed-b5ea-0242ac120002";
 let infra = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01b";
 let utopiaIsCreated = false;
 
+const mapping = {
+  Infrastructure: 1,
+  School: 2,
+  Courthouse: 3,
+  Hospital: 4,
+  Market: 5,
+  Nature: 6,
+};
+
 function createYoutopia() {
   const youTopia = new Youtopia();
 }
@@ -13,6 +22,7 @@ class Youtopia {
     this.device = null;
     this.port = null;
     this.writer = null;
+    this.encoder = new TextEncoder();
 
     this.characteristics = {}; // descriptor name => characteristic
     this.characteristicValues = {}; // descriptor name => count
@@ -22,8 +32,15 @@ class Youtopia {
   }
 
   async setupConnections() {
-    // await this.connectToSerial();
+    await this.connectToSerial();
     await this.connectToBluetooth();
+
+    const button = document.querySelector("#connect_btn");
+    button.style.opacity = 0;
+
+    setTimeout(() => {
+      button.style.display = "none";
+    }, 400);
   }
 
   async connectToSerial() {
@@ -56,7 +73,7 @@ class Youtopia {
       .catch((error) => {
         console.error(error);
       });
-    
+
     this.populateAllCharacteristics();
   }
 
@@ -71,7 +88,7 @@ class Youtopia {
       characteristic.startNotifications().then((c, i) => {
         c.addEventListener(
           "characteristicvaluechanged",
-          this.handleCharacteristicValueChanged(name, i)
+          debounce((e) => this.handleCharacteristicValueChanged(name, i)(e))
         );
       });
     });
@@ -93,13 +110,16 @@ class Youtopia {
       this.characteristicValues[name]++;
 
       this.chartData = Object.values(this.characteristicValues);
-      
+
       this.drawChart(this.chartData);
 
       console.log(`${name}: ${this.characteristicValues[name]}`);
+      console.log(mapping[name]);
 
-      // const dataArrayBuffer = this.encoder.encode({ [name]: value });
-      // await this.writer.write(dataArrayBuffer);
+      const dataArrayBuffer = this.encoder.encode(mapping[name]);
+      debugger;
+      await this.writer.write(dataArrayBuffer);
+      this.writer.releaseLock();
     };
   }
 

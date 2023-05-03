@@ -1,3 +1,29 @@
+main {
+  position: relative;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  transition: opacity 0.2s ease-out;
+  display: block;
+}
+
+#centerGraphic { 
+  height: 100vh;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  padding: 1em;
+}
+
 /******************************************************************************
 START Glitch hello-app default styles
 
