@@ -43,3 +43,10 @@ BLEDescriptor sensor2Descriptor("2901", "Hospital");
 BLEDescriptor sensor3Descriptor("2901", "Market");
 BLEDescriptor sensor4Descriptor("2901", "Nature");
 BLEDescriptor sensor5Descriptor("2901", "Courthouse");
+
+void selectI2CChannels(uint8_t i) {
+  if (i > 7) return;
+  Wire.beginTransmission(MUX_Address);
+  Wire.write(1 << i);
+  Wire.endTransmission();
+}
