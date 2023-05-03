@@ -18,31 +18,22 @@ Adafruit_APDS9960 apds3;
 Adafruit_APDS9960 apds4;
 Adafruit_APDS9960 apds5;
 
+int INFRA_ID = 1;
+int SCHOOL_ID = 2;
+int COURTHOUSE_ID = 3;
+int HOSPITAL_ID = 4;
+int MARKET_ID = 5;
+int NATURE_ID = 6;
+
 const char* CITY_NAME = "Youtopia";
 const char* CITY_UUID = "2d32cb10-dd61-11ed-b5ea-0242ac120002";
 
-const char* S0_UUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01a";
-const char* S1_UUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01b";
-const char* S2_UUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01c";
-const char* S3_UUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01d";
-const char* S4_UUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01e";
-const char* S5_UUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01f";
+const char* SUUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01a";
 
 BLEService cityService(CITY_UUID);  // create service
 
-BLEByteCharacteristic sensor0Characteristic(S0_UUID, BLERead | BLENotify);
-BLEByteCharacteristic sensor1Characteristic(S1_UUID, BLERead | BLENotify);
-BLEByteCharacteristic sensor2Characteristic(S2_UUID, BLERead | BLENotify);
-BLEByteCharacteristic sensor3Characteristic(S3_UUID, BLERead | BLENotify);
-BLEByteCharacteristic sensor4Characteristic(S4_UUID, BLERead | BLENotify);
-BLEByteCharacteristic sensor5Characteristic(S5_UUID, BLERead | BLENotify);
-
-BLEDescriptor sensor0Descriptor("2901", "Infrastructure");
-BLEDescriptor sensor1Descriptor("2901", "School");
-BLEDescriptor sensor2Descriptor("2901", "Hospital");
-BLEDescriptor sensor3Descriptor("2901", "Market");
-BLEDescriptor sensor4Descriptor("2901", "Nature");
-BLEDescriptor sensor5Descriptor("2901", "Courthouse");
+BLEByteCharacteristic sensorCharacteristic(SUUID, BLEWrite | BLENotify);
+BLEDescriptor sensorDescriptor("2901", "Sensor Data");
 
 void selectI2CChannels(uint8_t i) {
   if (i > 7) return;

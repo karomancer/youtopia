@@ -1,3 +1,4 @@
+int HOSPITAL_THRESHOLD = 20;
 /**
  * Setup
  */
@@ -24,9 +25,9 @@ void checkHospital() {
     // Serial.print("hospital: ");
     // Serial.println(data);
 
-    if (data > 20) {
+    if (data > HOSPITAL_THRESHOLD) {
       Serial.println("hospital registered");
-      sensor2Characteristic.writeValue(1);
+      sensorCharacteristic.writeValue(HOSPITAL_ID);
     }
     apds2.clearInterrupt();
   }

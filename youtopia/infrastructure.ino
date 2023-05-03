@@ -1,3 +1,4 @@
+int INFRA_THRESHOLD = 25;
 /**
  * Setup
  */
@@ -24,9 +25,9 @@ void checkInfrastructure() {
     // Serial.print("infrastructure: ");
     // Serial.println(data);
 
-    if (data > 25) {
+    if (data > INFRA_THRESHOLD) {
       Serial.println("infrastructure registered");
-      sensor3Characteristic.writeValue(1);
+      sensorCharacteristic.writeValue(INFRA_ID);
     }
     apds3.clearInterrupt();
   }

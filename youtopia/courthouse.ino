@@ -1,3 +1,5 @@
+int COURTHOUSE_THRESHOLD = 28;
+
 /**
  * Setup
  */
@@ -24,9 +26,9 @@ void checkCourthouse() {
     // Serial.print("courthouse: ");
     // Serial.println(data);
 
-    if (data > 28) {
+    if (data > COURTHOUSE_THRESHOLD) {
       Serial.println("courthouse registered");
-      sensor4Characteristic.writeValue(1);
+      sensorCharacteristic.writeValue(COURTHOUSE_ID);
     }
     apds4.clearInterrupt();
   }

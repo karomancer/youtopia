@@ -25,7 +25,7 @@ void checkNature() {
 
     if (data > 15) {
       Serial.println("nature registered");
-      sensor0Characteristic.writeValue(1);
+      sensorCharacteristic.writeValue(NATURE_ID);
     }
     apds.clearInterrupt();
   }

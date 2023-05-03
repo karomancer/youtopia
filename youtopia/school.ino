@@ -1,3 +1,4 @@
+int SCHOOL_THRESHOLD = 50;
 /**
  * Setup
  */
@@ -20,13 +21,13 @@ void setupSchool() {
 void checkSchool() {
   selectI2CChannels(5);
   if (!digitalRead(INT_PIN5)) {
-    int data5 = apds5.readProximity();
+    int data = apds5.readProximity();
     // Serial.print("school: ");
-    // Serial.println(apds5.readProximity());
+    // Serial.println(data);
 
-    if (data5 > 50) {
+    if (data > SCHOOL_THRESHOLD) {
       Serial.println("school registered");
-      sensor5Characteristic.writeValue(1);
+      sensorCharacteristic.writeValue(SCHOOL_ID);
     }
     apds5.clearInterrupt();
   }
