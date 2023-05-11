@@ -1,4 +1,4 @@
-int COURTHOUSE_THRESHOLD = 28;
+int COURTHOUSE_THRESHOLD = 20;
 
 /**
  * Setup
@@ -23,8 +23,8 @@ void checkCourthouse() {
   selectI2CChannels(4);
   if (!digitalRead(INT_PIN4)) {
     int data = apds4.readProximity();
-    // Serial.print("courthouse: ");
-    // Serial.println(data);
+    Serial.print("courthouse: ");
+    Serial.println(data);
 
     if (data > COURTHOUSE_THRESHOLD) {
       Serial.println("courthouse registered");

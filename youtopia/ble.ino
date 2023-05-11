@@ -9,8 +9,9 @@ void setupBLE() {
   BLE.setDeviceName(CITY_NAME);
   BLE.setAdvertisedService(cityService);
 
-  sensorCharacteristic.addDescriptor(sensorDescriptor);
+  // sensorCharacteristic.addDescriptor(sensorDescriptor);
   cityService.addCharacteristic(sensorCharacteristic);
+  sensorCharacteristic.writeValue(0);
 
   BLE.addService(cityService);
   BLE.advertise(); 

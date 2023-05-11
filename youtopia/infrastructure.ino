@@ -3,16 +3,16 @@ int INFRA_THRESHOLD = 25;
  * Setup
  */
 void setupInfrastructure() {
-  pinMode(INT_PIN3, INPUT_PULLUP);
+  pinMode(INT_PIN, INPUT_PULLUP);
 
   selectI2CChannels(3);
-  if (!apds3.begin()) {
+  if (!apds.begin()) {
     Serial.println("failed to initialize infrastructure! Please check your wiring.");
   } else Serial.println("infrastructure initialized!");
 
-  apds3.enableProximity(true);
-  apds3.setProximityInterruptThreshold(0, 5);
-  apds3.enableProximityInterrupt();
+  apds.enableProximity(true);
+  apds.setProximityInterruptThreshold(0, 5);
+  apds.enableProximityInterrupt();
 }
 
 /**
@@ -21,7 +21,7 @@ void setupInfrastructure() {
 void checkInfrastructure() {
   selectI2CChannels(3);
   if (!digitalRead(INT_PIN3)) {
-    int data = apds3.readProximity();
+    int data = apds.readProximity();
     // Serial.print("infrastructure: ");
     // Serial.println(data);
 
@@ -29,6 +29,6 @@ void checkInfrastructure() {
       Serial.println("infrastructure registered");
       sensorCharacteristic.writeValue(INFRA_ID);
     }
-    apds3.clearInterrupt();
+    apds.clearInterrupt();
   }
 }
