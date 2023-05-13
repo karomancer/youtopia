@@ -23,11 +23,12 @@ void checkCourthouse() {
   selectI2CChannels(4);
   if (!digitalRead(INT_PIN4)) {
     int data = apds4.readProximity();
-    Serial.print("courthouse: ");
-    Serial.println(data);
+    // Serial.print("courthouse: ");
+    // Serial.println(data);
 
     if (data > COURTHOUSE_THRESHOLD) {
-      Serial.println("courthouse registered");
+      // Serial.println("courthouse registered");
+      Serial.println(COURTHOUSE_ID);
       sensorCharacteristic.writeValue(COURTHOUSE_ID);
     }
     apds4.clearInterrupt();

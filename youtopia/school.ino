@@ -26,7 +26,8 @@ void checkSchool() {
     // Serial.println(data);
 
     if (data > SCHOOL_THRESHOLD) {
-      Serial.println("school registered");
+      // Serial.println("school register/ed");
+      Serial.println(SCHOOL_ID);
       sensorCharacteristic.writeValue(SCHOOL_ID);
     }
     apds5.clearInterrupt();

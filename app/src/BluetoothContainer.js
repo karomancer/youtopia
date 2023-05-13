@@ -3,7 +3,7 @@ import React from "react"
 import { debounce } from "./utils";
 
 const SERVICE_NAME = "Youtopia"
-const SERVICE_UUID = "2d32cb10-dd61-11ed-b5ea-0242ac120002";
+const SERVICE_UUID = "2d32cb10-dd61-11ed-b5ea-0242ac120004";
 
 class BluetoothContainer extends React.Component {
   sensingDevice = null;

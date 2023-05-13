@@ -20,16 +20,18 @@ void setup() {
 void loop() {
   BLEDevice central = BLE.central();
 
+  checkNature();
+  checkMarket();
+  checkHospital();
+  checkInfrastructure();
+  checkCourthouse();
+  checkSchool();
+
   // if (central) {
-    // Serial.println("Connected to central");
-    // while (central.connected()) {
-      checkNature();
-      checkMarket();
-      checkHospital();
-      checkInfrastructure();
-      checkCourthouse();
-      checkSchool();
-    // }
+  //   // Serial.println("Connected to central");
+  //   // while (central.connected()) {
+      
+  //   // }
   // }
 
   delay(100);

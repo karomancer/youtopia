@@ -26,9 +26,9 @@ int MARKET_ID = 5;
 int NATURE_ID = 6;
 
 const char* CITY_NAME = "Youtopia";
-const char* CITY_UUID = "2d32cb10-dd61-11ed-b5ea-0242ac120002";
+const char* CITY_UUID = "2d32cb10-dd61-11ed-b5ea-0242ac120004";
 
-const char* SUUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01a";
+const char* SUUID = "e9985dc9-f6c5-44ab-83b8-1dcd02b9c01b";
 
 BLEService cityService(CITY_UUID);  // create service
 

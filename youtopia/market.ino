@@ -1,4 +1,4 @@
-int NATURE_THRESHOLD = 40;
+int MARKET_THRESHOLD = 40;
 /**
  * Setup
  */
@@ -26,8 +26,9 @@ void checkMarket() {
     // Serial.print("market: ");
     // Serial.println(data);
 
-    if (data > NATURE_THRESHOLD) {
-      Serial.println("market registered");
+    if (data > MARKET_THRESHOLD) {
+      // Serial.println("market registered");
+      Serial.println(MARKET_ID);
       sensorCharacteristic.writeValue(MARKET_ID);
     }
     apds1.clearInterrupt();
